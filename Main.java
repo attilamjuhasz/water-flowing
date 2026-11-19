@@ -1,10 +1,29 @@
 public class Main{
     public static boolean canFlowOff(int[][] map, int row, int col){
         
-        if (map[row][col] > 0){//working}
-        
-        
-        return true;
+
+        boolean end = false;
+        System.out.println("row"+ row+"col "+col);
+        if (row-1 < 0 || row == map.length-1 || col-1 < 0 || col+1 > map[0].length-1){
+           return true;
+        }
+
+        int cur = map[row][col];
+
+        if (cur > map[row-1][col] && !end){
+            end = canFlowOff(map, row - 1, col);
+        }
+        if (cur > map[row+1][col] && !end){
+            end =canFlowOff(map, row + 1, col);
+        }
+        if (cur > map[row][col-1] && !end){
+            end = canFlowOff(map, row, col-1);
+        }
+        if (cur > map[row][col+1] && !end){
+            end = canFlowOff(map, row, col+1);
+        }
+
+        return end;
     }
 
     public static void main(String[] args){
