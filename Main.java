@@ -1,12 +1,13 @@
 public class Main{
 
-	// precondition: Map must be a rectangular array, and map/row/col must be defined. Also row/col must be greater than zero and less than map.length
+	// precondition: Map must be a rectangular array, and map/row/col must be defined.
 	// postcondition: returns a boolean: true if there is a way to the edge of the map following the lowest number next door, false otherwise
     public static boolean canFlowOff(int[][] map, int row, int col){
         
 
+        if (row < 0 || row > map.length -1 || col < 0 || col > map[0].length-1) return false;
+
         boolean end = false;
-        System.out.println("row"+ row+"col "+col);
         if (row-1 < 0 || row == map.length-1 || col-1 < 0 || col+1 > map[0].length-1){
            return true;
         }
@@ -43,10 +44,40 @@ public class Main{
 			{200, 200, 200, 200, 200, 200, 200, 200, 78, 77},
 			{200, 98, 200, 200, 200, 200, 200, 200, 200, 76}
         };
+        System.out.println(canFlowOff(map, 9, 9));
 
-        boolean a = canFlowOff(map, 4, 2);
+        int[][] map1 = {
+            {99, 99, 99, 99, 99},
+            {99, 90, 80, 70, 99},
+            {99, 99, 99, 60, 99},
+            {99, 99, 99, 50, 99},
+            {99, 99, 99, 40, 99}
+        };
 
-        System.out.println(a);
+        System.out.println(canFlowOff(map1, 1, 1));
+
+        int[][] map2 = {
+            {99, 99, 99, 99, 99, 99, 99},
+            {99, 90, 80, 70, 99, 99, 99},
+            {99, 99, 99, 60, 99, 99, 99},
+            {99, 99, 99, 99, 99, 99, 99},
+            {99, 99, 99, 99, 99, 99, 99}
+        };
+
+        System.out.println(canFlowOff(map2, 1, 1));
+
+        int[][] map3 = {
+            {99, 99, 99, 99, 99, 99},
+            {99, 70, 99, 99, 99, 99},
+            {99, 80, 90, 60, 50, 40},
+            {99, 99, 85, 99, 99, 99},
+            {99, 99, 99, 99, 99, 99},
+            {99, 99, 99, 99, 99, 99}
+        };
+
+        System.out.println(canFlowOff(map3, -1, 2));
     }
+
+    
 
 }
