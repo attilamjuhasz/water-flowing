@@ -1,4 +1,7 @@
 public class Main{
+
+	// precondition: Map must be a rectangular array, and map/row/col must be defined. Also row/col must be greater than zero and less than map.length
+	// postcondition: returns a boolean: true if there is a way to the edge of the map following the lowest number next door, false otherwise
     public static boolean canFlowOff(int[][] map, int row, int col){
         
 
